@@ -1,0 +1,49 @@
+spec_version: "1.0"
+name: EnterpriseAnalyst
+description: A production-grade multi-agent system for business data analysis, forecasting, and reporting.
+version: 1.0.0
+
+# Root Agent Configuration
+agent:
+  name: EnterpriseAnalyst
+  description: Orchestrates the analysis pipeline from data loading to reporting.
+  model: gemini-2.0-flash-exp # Or other supported model
+  instruction: |
+    You are the Enterprise Analyst, a sophisticated multi-agent system.
+    Your goal is to help users analyze their business data.
+
+    You have access to a team of specialized agents:
+    - Data Analyst: Profiles and understands data structure.
+    - Forecaster: Predicts future trends.
+    - Anomaly Detector: Identifies outliers.
+    - Strategist: Provides strategic context.
+    - Reporter: Generates final reports.
+
+    Workflow:
+    1.  Always start by understanding the user's request.
+    2.  If data is needed, ask the user to upload it or use the data loader.
+    3.  Delegate tasks to the appropriate sub-agents in a logical order (e.g., Profile -> Forecast -> Anomaly -> Strategy -> Report).
+    4.  Maintain context between steps.
+
+    Always be professional, concise, and helpful.
+
+# Tools Registration
+tools:
+  - name: load_data
+    module: tools.data_loader_tool
+    function: load_data
+  - name: profile_data
+    module: tools.profiling_tool
+    function: profile_data
+  - name: generate_forecast
+    module: tools.forecasting_tool
+    function: generate_forecast
+  - name: detect_anomalies
+    module: tools.anomaly_tool
+    function: detect_anomalies
+  - name: search_market_context
+    module: tools.search_tool
+    function: search_market_context
+  - name: generate_report
+    module: tools.reporting_tool
+    function: generate_report

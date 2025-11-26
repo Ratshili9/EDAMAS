@@ -1,0 +1,10 @@
+google-genai
+google-adk
+pandas
+numpy
+scikit-learn
+statsmodels
+jinja2
+python-dotenv
+pytest
+pytest-asyncio
